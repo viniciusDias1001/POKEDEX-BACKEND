@@ -1,0 +1,35 @@
+service: Backend-Pokedex
+frameworkVersion: '3'
+
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  createUser:
+    handler: src/handlers/createUser.handler
+    events:
+      - httpApi:
+          path: /sign
+          method: POST
+          cors: true
+  getUserById:
+    handler: src/handlers/getUserById.handler
+    events:
+      - httpApi:
+          path: /user/{id}
+          method: GET
+          cors: true
+  getUserByEmail:
+    handler: src/handlers/getUserByEmail.handler
+    events:
+      - httpApi:
+          path: /user
+          method: GET
+          cors: true
