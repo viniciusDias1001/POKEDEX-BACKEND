@@ -7,7 +7,7 @@ module.exports.handler = async (event, context) =>{
     try{
         await connectDatabase();
         const email = event.queryStringParameters.email;
-        const userObj = await User.findOne({email: email});
+        const userObj = await User.findOne({email: email}).select("+password");
 
         return {
             statusCode: 200,

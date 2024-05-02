@@ -23,7 +23,7 @@ module.exports.handler = async (event, context) =>{
 
 
         return {
-            statusCode: 200,
+            statusCode: 201,
             body: JSON.stringify(user)
         } 
     }catch (error){
